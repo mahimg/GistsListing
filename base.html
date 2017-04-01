@@ -42,6 +42,9 @@
 
       </div>
     </div>
+    <div class="left" v-if="currentPage != 'unset' ">
+      <span class="badge" style="padding: 10px;">Page {{ currentPage }}</span>
+    </div>
     <div class="center" style="padding: 10px;"  v-if="!showtable">
       <button class="btn waves-effect waves-light" v-on:click="getgistlist()" type="submit" name="action">Get gist list</button>
     </div>
