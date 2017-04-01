@@ -1,0 +1,54 @@
+<html>
+<head>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+  <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+</head>
+<body>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
+
+  <div id="getgist">
+    <div id="tableDIV" v-if="showtable">
+      <table class="bordered striped">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Last Updated</th>
+            <th>Title</th>
+            <th>Gist link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="gist in files">
+            <td>{{ gist.owner ?  gist.owner.login : "Anonymous"}}</td>
+            <td>{{ gist.updated_at.slice(8,10) + '/' + gist.updated_at.slice(5,7) + '/' + gist.updated_at.slice(0,4) }}</td>
+            <td>{{ gist.description ?  gist.description : "No description" }}</td>
+            <td><a v-bind:href="gist.html_url" target="_blank">{{ gist.html_url }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <ul class="pagination">
+        <li class="waves-effect" v-for="i in 10"><a v-on:click="getgistlist(i)">{{i}}</a></li>
+      </ul>
+    </div>
+    <div class="center" style="padding: 10px;"  v-if="!showtable">
+      <button class="btn waves-effect waves-light" v-on:click="getgistlist()" type="submit" name="action">Get gist list</button>
+    </div>
+  </div>
+  <script type="text/javascript" src="main.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+
+
+
+</body>
+</html>
