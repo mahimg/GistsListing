@@ -4,4 +4,4 @@ Using Vue.js implemented Github API to render public gists.
 ![Main](https://github.com/mahimg/GistsListing/blob/master/screenshots/1.png)
 ___
 Paginations supports rendering of 300 gists.
-![Main](https://github.com/mahimg/GistsListing/blob/master/screenshots/2.png)
+![Pagination](https://github.com/mahimg/GistsListing/blob/master/screenshots/2.png)
