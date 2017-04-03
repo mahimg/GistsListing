@@ -3,10 +3,11 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
   <!--Import Google Icon Font-->
-      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -17,6 +18,21 @@
 
   <div id="getgist">
     <div id="tableDIV" v-if="showtable">
+      <form class="col s12">
+        <div class="row">
+          <div class="filter">
+            <div class="filterBar">
+              <div class="col s12">
+                Filter By:
+                <div class="input-field inline">
+                  <input id="filter_input" v-model="filter_text" class="validate">
+                  <label for="filter_input" data-error="wrong" data-success="right"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
       <table class="bordered striped">
         <thead>
           <tr>
@@ -27,10 +43,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="gist in files">
-            <td>{{ gist.owner ?  gist.owner.login : "Anonymous"}}</td>
-            <td>{{ gist.updated_at.slice(8,10) + '/' + gist.updated_at.slice(5,7) + '/' + gist.updated_at.slice(0,4) }}</td>
-            <td>{{ gist.description ?  gist.description : "No description" }}</td>
+          <tr v-for="gist in selected_gists">
+            <td>{{ gist.owner.login}}</td>
+            <td>{{ gist.updated_at }}</td>
+            <td>{{ gist.description }}</td>
             <td><a v-bind:href="gist.html_url" target="_blank">{{ gist.html_url }}</a></td>
           </tr>
         </tbody>

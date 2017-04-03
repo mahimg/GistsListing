@@ -1,0 +1,13 @@
+table {
+  padding: 30px;
+  width: 70%;
+  margin: 0 auto;
+}
+.filterBar {
+}
+.filter {
+  float:none;
+}
+.filter_button {
+  width: 8px;
+}
